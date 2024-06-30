@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      *{
+        margin: 0.1em;
+      }
+      button:hover{
+         border-color:rgb(212, 255, 0) ;
+      }
+      
+      .input1{
+        display: flex;
+      }
+      .input2{
+        display: flex;
+      }
+      .main{
+        border-style:solid ;
+        display: inline-block;
+        margin-top: 15%;
+        margin-left: 20%;
+        padding: 10em;
+        font-size: 2em;
+      }
+    </style>
+</head>
+<body>
+ <div class="main">
+  <div class="input1">
+    <p>number1</p>
+    <input type="text" id="number1">
+   </div>    
+<div class="input2">
+  <p>number2</p>
+  <input type="text" id="number2">
+
+</div>
+  <button onclick="multiply()">multiply</button>
+  <button onclick="divide()">divide</button>
+
+  <p id="result"></p>
+ </div>
+<script>
+  function multiply(){
+    let number1=document.getElementById("number1").value;
+    let number2=document.getElementById("number2").value;
+    let el=document.getElementById("result");
+    let result=number1*number2;
+    el.innerText=`the result is ${result}`;
+}
+function divide(){
+    let number1=document.getElementById("number1").value;
+    let number2=document.getElementById("number2").value;
+    let el=document.getElementById("result");
+    let result=number1/number2;
+    el.innerText=`the result is ${result}`;
+}
+
+</script>
+</body>
+</html>

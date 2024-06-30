@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table{
+        height: 16px;
+    }
+    .validity{
+        display: none;
+    }
+   
+</style>
+<body>
+    <form name="form" action="action.php"  onsubmit="return check()" >
+        <table>
+            <tr id="r1">
+                <td>Name</td>
+                <td><input type="text" class="in"></td>
+                <td class="validity">this feild is required</td>
+            </tr>
+            <tr id="r2">
+                <td>Email</td>
+                <td><input type="email" name="email" id="email" class="in"></td>
+                <td class="validity">A valid email address is required</td>
+            </tr>
+            <tr id="r3">
+                <td>Website</td>
+                <td><input type="text" class="in"></td>
+                <td class="validity">An valid url is require</td>
+            </tr>
+            <tr id="r4">
+                <td>Message</td>
+                <td><textarea name="Message" id="message" class="in"></textarea></td>
+                <td class="validity">this feild is required</td>
+            </tr>
+        </table>
+        <input type="submit" value="Submit" id="submit" >
+    </form>
+     <script>
+        function check(){
+            let el=document.getElementsByTagName("tr");
+            let result=[];
+            for(let i=0;i<el.length;i++){
+            let input=el[i].querySelector(".in");
+            let msg=el[i].querySelector(".validity");
+            if(input.value === ""){
+                msg.style.display="block";
+                msg.style.color="red";
+                input.style.borderStyle="solid";
+                input.style.borderColor="red";
+                result.push(false);
+            }
+        }
+        if(result.length>0){
+            return false;
+        }
+
+
+        }
+     
+     </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="showdate()">show date</button>
+    <p id="date"></p>
+    <button onclick="showtime()">show time</button>
+    <p id="time"></p>
+    <script>
+    const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+       function showdate(){
+        const d=new Date();
+        let el=document.getElementById("date");
+        el.innerText=`${d.getDate()}/${month[d.getMonth()]}/${d.getFullYear()}`;
+       }
+       function showtime(){
+        const d=new Date();
+        const weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+        let el=document.getElementById("time");
+        let str=" GMT +0530 (INDIAN STANDART TIME)"
+        el.innerText=`${weekday[d.getDay()]} ${month[d.getMonth()]} ${d.getDate()} ${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`+str;
+       }
+    </script>
+</body>
+</html>

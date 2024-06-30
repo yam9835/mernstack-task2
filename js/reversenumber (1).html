@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Task-5</title>
+    <style>
+        #contact label{
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+        }
+        #contact_submit{
+            padding-left: 100px;
+        }
+        #contact div{
+            margin-top: 1em;
+        }
+        textarea{
+            vertical-align: top;
+            height: 5em;
+            width: 200px;
+        }                
+        .error{
+            display: none;
+            margin-left: 10px;
+        }		            
+        .error_show{
+            color: red;
+            margin-left: 10px;
+            display: inline-block; 
+        }            
+        input.invalid, textarea.invalid{
+            border: 2px solid red;
+        }            
+        input.valid, textarea.valid{
+            border: 2px solid green;
+        }
+    </style>
+</head>
+<body>
+    <form id="contact" method="post" action="" novalidate>			
+        <div>
+            <label for="contact_name">Name:</label>
+            <input type="text" id="contact_name" name="name"></input>
+            <span class="error error_name">This field is required</span>
+        </div>			
+        <div>
+            <label for="contact_email">Email:</label>
+            <input type="email" id="contact_email" name="email"></input>
+            <span class="error error_email">A valid email address is required</span>				
+        </div>								
+        <div>
+            <label for="contact_website">Website:</label>
+            <input type="url" id="contact_website" name="website"></input>
+            <span class="error error_website">A valid url is required</span>								
+        </div>									
+        <div>
+            <label for="contact_message">Message:</label>
+            <textarea id="contact_message" name="message"></textarea>
+            <span class="error error_message">This field is required</span>												
+        </div>								
+        <div id="contact_submit">				
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var contactForm = document.getElementById('contact');
+            function validateName() {
+                var nameInput = document.getElementById('contact_name');
+                var isValid = !!nameInput.value.trim();
+                if (isValid){
+                    nameInput.classList.remove('invalid');
+                    nameInput.classList.add('valid');
+                    document.querySelector('.error_name').style.display = 'none';
+                    document.querySelector('.error_name').classList.remove('error_show');
+                } 
+                else{
+                    nameInput.classList.remove('valid');
+                    nameInput.classList.add('invalid');
+                    document.querySelector('.error_name').style.display = 'inline-block';
+                    document.querySelector('.error_name').classList.add('error_show');
+                }
+                return isValid;
+            }
+            function validateEmail(){
+                var emailInput = document.getElementById('contact_email');
+                var re = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
+                var isValid = re.test(emailInput.value);
+                if (isValid){
+                    emailInput.classList.remove('invalid');
+                    emailInput.classList.add('valid');
+                    document.querySelector('.error_email').style.display = 'none';
+                    document.querySelector('.error_email').classList.remove('error_show');
+                } 
+                else{
+                    emailInput.classList.remove('valid');
+                    emailInput.classList.add('invalid');
+                    document.querySelector('.error_email').style.display = 'inline-block';
+                    document.querySelector('.error_email').classList.add('error_show');
+                }
+                return isValid;
+            }
+            function validateWebsite(){
+                var websiteInput = document.getElementById('contact_website');
+                var url = websiteInput.value.trim();
+                if (url.substring(0, 4) === 'www.'){
+                    websiteInput.value = 'http://www.' + url.substring(4);
+                }
+                var re = /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/+#-]*[\w@?^=%&amp;\/+#-])?/;
+                var isValid = re.test(websiteInput.value);
+                if (isValid){
+                    websiteInput.classList.remove('invalid');
+                    websiteInput.classList.add('valid');
+                    document.querySelector('.error_website').style.display = 'none';
+                    document.querySelector('.error_website').classList.remove('error_show');
+                } 
+                else{
+                    websiteInput.classList.remove('valid');
+                    websiteInput.classList.add('invalid');
+                    document.querySelector('.error_website').style.display = 'inline-block';
+                    document.querySelector('.error_website').classList.add('error_show');
+                }
+                return isValid;
+            }
+            function validateMessage(){
+                var messageInput = document.getElementById('contact_message');
+                var isValid = !!messageInput.value.trim();
+                if (isValid){
+                    messageInput.classList.remove('invalid');
+                    messageInput.classList.add('valid');
+                    document.querySelector('.error_message').style.display = 'none';
+                    document.querySelector('.error_message').classList.remove('error_show');
+                } 
+                else{
+                    messageInput.classList.remove('valid');
+                    messageInput.classList.add('invalid');
+                    document.querySelector('.error_message').style.display = 'inline-block';
+                    document.querySelector('.error_message').classList.add('error_show');
+                }
+                return isValid;
+            }
+            contactForm.addEventListener('submit', function(event){
+                var isNameValid = validateName();
+                var isEmailValid = validateEmail();
+                var isWebsiteValid = validateWebsite();
+                var isMessageValid = validateMessage();    
+                if (!isNameValid || !isEmailValid || !isWebsiteValid || !isMessageValid) {
+                    event.preventDefault();
+                } 
+                else{
+                    alert('No errors: Form will be submitted');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .main{
+            height: 300px;
+        }
+        #train{
+            position: relative;
+        }
+        img{
+            width: 200px;
+        }
+        .buttons{
+            text-align: center;
+        }
+        h1{
+            color: rgb(153, 130, 64);
+        }
+    </style>
+</head>
+<body>
+     <div class="main">
+       <div id="train">
+<img src="Modern-train-icon-Subway-transport-Rai-Graphics-57834912-1-1-580x387.png" alt="">    </div>
+       <div class="buttons">
+        <h1>click the following buttons to handle animation</h1>
+        <button id="start">start</button>
+        <button id="stop">stop</button>
+       </div>
+    </div>
+    <script>
+let nIntervId;
+let pos=0;
+
+function startTrain() {
+  if (!nIntervId) {
+    nIntervId = setInterval(move, 3);
+  }
+}
+
+function move() {
+  const oElem = document.getElementById("train");
+  if(pos===1300){
+    pos=0;
+  }
+  pos++;
+  oElem.style.left=pos+'px';
+}
+
+function stopTrain() {
+  clearInterval(nIntervId);
+  nIntervId = null;
+}
+
+document.getElementById("start").addEventListener("click", startTrain);
+document.getElementById("stop").addEventListener("click", stopTrain);
+
+    </script>
+</body>
+</html>

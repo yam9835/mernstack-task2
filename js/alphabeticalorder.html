@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript sort</h1>
+<p>Displaying the text after being sorted alphabetically</p>
+
+<h1 id="demo"></h1>
+
+<script>
+let text = prompt("enter the text to be sorted");
+const myArray = text.split("");
+myArray.sort();
+document.getElementById("demo").innerHTML = myArray.join("");
+</script>
+
+</body>
+</html>

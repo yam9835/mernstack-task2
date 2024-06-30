@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        caption{
+            color: rgb(194, 153, 135);
+            font-size:xx-large;
+        }
+        .container{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            background-color: rgb(134, 130, 145);
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+        }
+        table{
+            height: 500px;
+        }
+        .ethnus{
+            text-align: end;
+        }
+        p{
+            margin: 0;
+            margin-bottom: 6px;
+        }
+        .submit{
+            width: 5rem;
+            background-color: red;
+            color: white;
+        }
+        .psubmit{
+            text-align: center;
+        }
+        .names{
+            text-align: end;
+        }
+        .input{
+            width: 24rem;
+        }
+        
+
+    </style>
+</head>
+<body>
+   <div class="container">
+    <form action="#" onsubmit="return find()">
+        <table>
+            <caption>Registration form</caption>
+            <tr>
+                <td class="names">first name</td>
+                <td><input type="text" class="input"></td>
+                <td class="check"></td>
+            </tr>
+            <tr>
+                <td class="names">last name</td>
+                <td><input type="text" class="input"></td>
+                <td class="check"></td>
+            </tr>
+            <tr>
+                <td class="names">email</td>
+                <td><input type="email" class="input"></td>
+                <td class="check"></td>
+            </tr>
+            <tr>
+                <td class="names">password</td>
+                <td><input type="password" class="input"></td>
+                <td class="check"></td>
+            </tr>
+            <tr>
+                <td class="names">reenter password</td>
+                <td><input type="password" class="input"></td>
+                <td class="check"></td>
+            </tr>
+            <tr>
+               <td class="names">gender</td>
+               <td><input type="radio" name="male">male<br><input type="radio" name="female">female </td>
+            </tr>
+            <tr>
+                <td class="names">age</td>
+                <td><input type="text" class="input"></td>
+                <td class="check"></td>
+            </tr>
+            <tr>
+                <td class="names">phone number</td>
+                <td><input type="text" class="input"></td>
+                <td class="check"></td>
+            </tr>
+            <tr>
+                <td class="names">address</td>
+                <td><textarea name="address" id="address" class="input"></textarea></td>
+                <td class="check"></td>
+            </tr>
+            <tr>
+                <td class="names">state</td>
+                <td><input type="text" class="input"></td>
+                <td class="check"></td>
+            </tr>
+            <tr>
+                <td class="names">country</td>
+                <td><select name="country" id="country">
+                    <option value="select country">select country</option>
+                    <option value="india">india</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td class="names"> language known</td>
+                <td><input type="checkbox">english
+                <input type="checkbox">telugu
+            <input type="checkbox">hindi</td>
+            </tr>
+        </table>
+        <p><input type="checkbox">here by i declare all the above is true</p>
+        <p class="ethnus">log into ethnus website</p>
+        <P class="psubmit"><input type="submit" value="submit" onclick="find()" class="submit"></P>
+    </form>
+
+   </div>
+    <script>
+       let check=document.querySelectorAll(".check");
+       let inputs=document.querySelectorAll(".input");
+      function find(){
+        for(let i=0;i<inputs.length;i++){
+            let length=inputs[i].value.length;
+            if(length<5){
+                check[i].innerHTML="POOR";
+                check[i].style.color="red";
+            }
+            else{
+                check[i].innerHTML="STRONG";
+                check[i].style.color="green";
+
+            }
+        }
+      }
+    </script>
+</body>
+</html>
